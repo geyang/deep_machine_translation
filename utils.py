@@ -95,10 +95,10 @@ class Ledger():
     def white(self, *args, **kwargs):
         self.cprint(*args, color='white', **kwargs)
 
-        # def assert(self, statement, warning):
-        #     if not statement:
-        #         self.error(warning)
-        #
+    # def assert(self, statement, warning):
+    #     if not statement:
+    #         self.error(warning)
+    #
 
     def raise_(self, exception, *args, **kwargs):
         self.error(*args, **kwargs)

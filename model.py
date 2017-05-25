@@ -75,7 +75,8 @@ class DecoderRNN(nn.Module):
         return output_embeded, hidden
 
     def extract(self, output_embeded):
-        """word embedding to class indexes"""
+        """word embedding to class indexes, extracts the largest value. """
+        # todo: use temperature to correctly output a draw from the distribution
         b_size, seq_len, n_words = output_embeded.size()
         output_softmax = self.output_softmax(output_embeded.view(-1, n_words))
         # TODO: alternatively: output_words = output_softmax.multinomial(1).view(batch_size, -1)

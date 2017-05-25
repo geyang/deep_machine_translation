@@ -97,7 +97,6 @@ class Session():
 
         # train
         self.meta.losses = []
-        # print(self.word_index_pairs)
         for i, (inputs, target) in enumerate(tqdm(data.get_batch(self.word_index_pairs, self.args.BATCH_SIZE))):
             hidden = self.model.init_hidden(len(inputs))
             optimizer.zero_grad()
@@ -116,13 +115,7 @@ class Session():
             # TODO: instead of clipping output_embedded, should pad target longer with <NULL>. (different from t_padded!).
             # NOTE: need to cut target_vec to same length as seq_len
             target_without_SOS = target_vec[:, 1:(seq_len + 1)].contiguous().view(-1)
-            # self.ledger.debug(output_embeded.size(), target_without_SOS.size())
             loss = criterion(output_embeded.view(-1, n_words), target_without_SOS)
-
-            # target_vec.t()[1:].t().view(-1))
-
-            # for output_softmax, t in zip(output_softmaxes, target_padded):
-            #     loss += criterion(output_softmax, t)
 
             self.meta.losses.append(loss.data.numpy()[0])
             if i % self.args.EVAL_INTERVAL == 0:
@@ -147,7 +140,7 @@ class Session():
         return os.path.join(self.args.CHECKPOINT_FOLDER, filename or self.checkpoint_filename(**kwargs))
 
     def __enter__(self):
-        # TODO: load parames from checkpoint
+        # TODO: load params from checkpoint
         if self.args.CHECKPOINT is not '':
             # try:
             cp = self.model.load(self.checkpoint_location(self.args.CHECKPOINT))
@@ -155,6 +148,7 @@ class Session():
             # except Exception as e:
             #     self.ledger.raise_(e, 'error with enter.')
             return self
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.model.save(self.checkpoint_location(self.args.CHECKPOINT), {
