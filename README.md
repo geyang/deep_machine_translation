@@ -4,6 +4,22 @@
 
 This is a fun week-long project I did to implement a sequence to sequence model in PyTorch. The project uses language pairs from the Anki project as the training set.
 
+## TODO List
+
+- [x] polish demo
+- [x] write sequence to sequence example
+- [x] get both training and evaluation to work
+- [ ] Add BLUE as accuracy metric
+- [ ] Add confusion matrix in demo.
+- [ ] Add unzip script for languages
+- [ ] polish repo
+- [ ] Compare results with attention model
+
+## DONE
+- [x] write data scraper, download zip files from anki
+- [x] convert zip to text file
+- [x] write evaluation function
+
 ## Usage
 
 #### work-in-progress
@@ -77,18 +93,3 @@ optional arguments:
 
 - **Training and loss function need more work**. The loss function used here feels a bit unsatisfactory.
 
-## TODO List
-
-- [x] polish demo
-- [x] write sequence to sequence example
-- [x] get both training and evaluation to work
-- [ ] Add BLUE as accuracy metric
-- [ ] Add confusion matrix in demo.
-- [ ] Add unzip script for languages
-- [ ] polish repo
-- [ ] Compare results with attention model
-
-## DONE
-- [x] write data scraper, download zip files from anki
-- [x] convert zip to text file
-- [x] write evaluation function
