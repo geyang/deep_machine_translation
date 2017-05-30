@@ -1,4 +1,4 @@
-# Deep Machine Translation [Work-In-Progress 2017-04-02]
+# Deep Machine Translation [Work-In-Progress]
 [![](https://img.shields.io/badge/link_on-GitHub-brightgreen.svg?style=flat-square)](https://github.com/episodeyang/deep_machine_translation/tree/master#deep-machine-translation-work-in-progress-2017-04-02)
 
 
